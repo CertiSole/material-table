@@ -56,7 +56,10 @@ class MTableBody extends React.Component {
             )}
             key="empty-"
           >
-            {localization.emptyDataSourceMessage}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABjklEQVR4nO2TuS+EURTFfxIJirFFgwqFrSFaItNSiGh0DLElEmYsQVQ0ev+FLRqVJTpLTQhii4YCM9EQMvKSY/Ly5c0Yo5liTvIl3z33nnPfu+89yCDdUA6E/qEPycOJPOAYiAJ9KZj3SWs8cl0F8yq4BkpSaFAEXMhj1pssBl6VbBFnVlH1xyat8nhRwxj6ldhWXA88iDsBJoBmwA9MAVvAUpwmu9IFbHJD5IDiTcX7QFj/rs+s2Ish5VZt8md21Yq7gC/gBmgAOrXyMaANaAQ+gHOgwtOgVl5nNhkR6bO4EeATeAPGdctsTEvzDqwDPeLzxYd/a4BGcK/cI7AMdOjwzSVot652VOYF+n91jajGMVMfMAnceuZvNAbZwJ3GZVDnGtGayEHiIwtoAkY1lmegFFiUdkF1w4pXXK9wJ0EDe0cHqo/onE6tM9pTrjem0KN4SXD1XLvp1tierNH65WF2V+gVzSl5qZedDHKBSv0bzZU8ZuIVH7leYZIISHsI5MQrKgOCpI6gPDJII3wDfjRztnYGUBAAAAAASUVORK5CYII=" />
+              {localization.emptyDataSourceMessage}
+            </div>
           </TableCell>
         </TableRow>
       );
