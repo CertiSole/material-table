@@ -25,7 +25,7 @@ const OverlayLoading = (props) => (
         textAlign: "center",
       }}
     >
-      <CircularProgress />
+      <CircularProgress style={{ color: "#000" }} />
     </div>
   </div>
 );

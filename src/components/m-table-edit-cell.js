@@ -92,7 +92,7 @@ class MTableEditCell extends React.Component {
     if (this.state.isLoading) {
       return (
         <div style={{ display: "flex", justifyContent: "center", width: 60 }}>
-          <CircularProgress size={20} />
+          <CircularProgress size={20} style={{ color: "#000" }} />
         </div>
       );
     }
