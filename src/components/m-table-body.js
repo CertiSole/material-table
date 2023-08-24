@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 import * as React from "react";
 /* eslint-enable no-unused-vars */
 
+import BKevtZc6mL9s from "../assets/BKevtZc6mL9s.png";
+
 class MTableBody extends React.Component {
   renderEmpty(emptyRowCount, renderData) {
     const rowHeight = this.props.options.padding === "default" ? 49 : 36;
@@ -64,7 +66,7 @@ class MTableBody extends React.Component {
               }}
             >
               <img
-                src="https://img.icons8.com/?size=192&amp;id=BKevtZc6mL9s&amp;format=png"
+                src={BKevtZc6mL9s}
                 style={{ width: "26px", height: "26px" }}
               />
               {localization.emptyDataSourceMessage}
