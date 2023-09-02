@@ -4,6 +4,7 @@ import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import PropTypes from "prop-types";
 import * as React from "react";
+import Dropzone from "react-dropzone";
 /* eslint-enable no-unused-vars */
 
 class MTableBody extends React.Component {
@@ -56,40 +57,49 @@ class MTableBody extends React.Component {
             )}
             key="empty-"
           >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <svg
-                version="1.0"
-                xmlns="http://www.w3.org/2000/svg"
-                width="192.000000pt"
-                height="192.000000pt"
-                viewBox="0 0 192.000000 192.000000"
-                preserveAspectRatio="xMidYMid meet"
-                style={{ width: "26px", height: "26px" }}
-              >
-                <g
-                  transform="translate(0.000000,192.000000) scale(0.100000,-0.100000)"
-                  fill="#000000"
-                  stroke="none"
+            <Dropzone onDrop={this.props.handleFileUpload}>
+              {({ getRootProps, getInputProps }) => (
+                <div
+                  {...getRootProps()}
+                  style={{
+                    padding: 80,
+                    border: "2px dashed rgba(0, 0, 0, 0.38)",
+                  }}
                 >
-                  <path
-                    d="M285 1524 c-277 -340 -270 -823 16 -1148 l34 -38 57 57 57 58 -44 50
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <svg
+                      version="1.0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192.000000pt"
+                      height="192.000000pt"
+                      viewBox="0 0 192.000000 192.000000"
+                      preserveAspectRatio="xMidYMid meet"
+                      style={{ width: "26px", height: "26px" }}
+                    >
+                      <g
+                        transform="translate(0.000000,192.000000) scale(0.100000,-0.100000)"
+                        fill="#000000"
+                        stroke="none"
+                      >
+                        <path
+                          d="M285 1524 c-277 -340 -270 -823 16 -1148 l34 -38 57 57 57 58 -44 50
 c-54 62 -119 188 -142 277 -24 88 -24 272 0 360 24 90 88 216 144 279 l46 52
 -54 55 c-29 30 -57 54 -61 54 -4 0 -28 -25 -53 -56z"
-                  />
-                  <path
-                    d="M1521 1526 l-54 -55 46 -52 c162 -185 209 -477 118 -720 -25 -65 -89
+                        />
+                        <path
+                          d="M1521 1526 l-54 -55 46 -52 c162 -185 209 -477 118 -720 -25 -65 -89
 -169 -132 -215 l-29 -30 57 -58 58 -58 34 38 c87 100 157 232 194 369 31 114
 31 316 0 430 -26 97 -61 178 -110 253 -40 64 -111 152 -122 152 -4 0 -31 -24
 -60 -54z"
-                  />
-                  <path
-                    d="M501 1266 c-44 -33 -81 -85 -81 -114 0 -37 34 -84 113 -158 120 -111
+                        />
+                        <path
+                          d="M501 1266 c-44 -33 -81 -85 -81 -114 0 -37 34 -84 113 -158 120 -111
 289 -196 452 -225 50 -10 64 -16 60 -27 -21 -55 -23 -53 122 -135 l138 -77 43
 47 c82 90 134 172 158 249 13 41 24 85 24 98 0 40 -30 66 -98 81 -119 28 -168
 66 -221 172 -17 34 -40 67 -50 73 -30 15 -76 12 -153 -11 -100 -31 -216 -23
@@ -97,11 +107,15 @@ c-54 62 -119 188 -142 277 -24 88 -24 272 0 360 24 90 88 216 144 279 l46 52
 38 -39 33 -66 93 -123 174 -162 39 -19 77 -34 84 -34 7 0 13 -2 13 -5 0 -17
 -35 -84 -66 -126 l-36 -49 -41 25 c-40 24 -42 27 -43 75 -1 69 -15 80 -111 91
 -161 18 -339 95 -451 195 -67 60 -73 83 -14 58 20 -9 62 -25 92 -36z"
-                  />
-                </g>
-              </svg>
-              {localization.emptyDataSourceMessage}
-            </div>
+                        />
+                      </g>
+                    </svg>
+                    {localization.emptyDataSourceMessage}
+                  </div>
+                  <input {...getInputProps()} />
+                </div>
+              )}
+            </Dropzone>
           </TableCell>
         </TableRow>
       );
@@ -389,6 +403,7 @@ MTableBody.propTypes = {
   onCellEditFinished: PropTypes.func,
   bulkEditOpen: PropTypes.bool,
   onBulkEditRowChanged: PropTypes.func,
+  handleFileUpload: PropTypes.func,
 };
 
 export default MTableBody;
