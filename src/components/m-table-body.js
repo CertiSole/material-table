@@ -8,6 +8,21 @@ import Dropzone from "react-dropzone";
 /* eslint-enable no-unused-vars */
 
 class MTableBody extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isDragOver: false,
+    };
+  }
+
+  handleDragEnter = () => {
+    this.setState({ isDragOver: true });
+  };
+
+  handleDragLeave = () => {
+    this.setState({ isDragOver: false });
+  };
+
   renderEmpty(emptyRowCount, renderData) {
     const rowHeight = this.props.options.padding === "default" ? 49 : 36;
     const localization = {
@@ -57,13 +72,26 @@ class MTableBody extends React.Component {
             )}
             key="empty-"
           >
-            <Dropzone onDrop={this.props.handleFileUpload}>
+            <Dropzone
+              onDrop={(acceptedFiles) =>
+                this.props.handleFileUpload(acceptedFiles[0])
+              }
+              accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, .json"
+              maxFiles={1}
+              onDragEnter={this.handleDragEnter}
+              onDragLeave={this.handleDragLeave}
+              noClick={true}
+              noDragEventsBubbling={true}
+            >
               {({ getRootProps, getInputProps }) => (
                 <div
                   {...getRootProps()}
                   style={{
                     padding: 80,
-                    border: "2px dashed rgba(0, 0, 0, 0.38)",
+                    border: this.state.isDragOver
+                      ? "1px dashed black"
+                      : "1px dashed rgba(0, 0, 0, 0.38)",
+                    borderRadius: 4,
                   }}
                 >
                   <div
