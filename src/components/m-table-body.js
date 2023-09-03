@@ -151,6 +151,7 @@ c-54 62 -119 188 -142 277 -24 88 -24 272 0 360 24 90 88 216 144 279 l46 52
                   </div>
                   <input {...getInputProps()} />
                   <span>{localization.dragAnDropMessage}</span>
+                  <br />
                   <em>{localization.dragAndDropMaximumFiles}</em>
                 </div>
               )}
@@ -402,7 +403,7 @@ MTableBody.defaultProps = {
     emptyDataSourceMessage: "No records to display",
     filterRow: {},
     editRow: {},
-    dragAnDropMessage: "Drag 'n' drop your file here",
+    dragAndDropMessage: "Drag 'n' drop your file here",
     dragAndDropMaximumFiles:
       "(1 file is the maximum number of file you can drop here)",
   },
