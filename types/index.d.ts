@@ -376,8 +376,8 @@ export interface Localization {
     addTooltip?: React.ReactNode;
     deleteTooltip?: React.ReactNode;
     editTooltip?: React.ReactNode;
-    dragAnDropMessage?: React.ReactNode;
-    dragAndDropMaximumFiles?: React.ReactNode;
+    dragAnDropMessage?: string;
+    dragAndDropMaximumFiles?: string;
   };
   header?: {
     actions?: React.ReactNode;
