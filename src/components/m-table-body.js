@@ -5,6 +5,7 @@ import TableRow from "@mui/material/TableRow";
 import PropTypes from "prop-types";
 import * as React from "react";
 import Dropzone from "react-dropzone";
+import { withTheme } from "@mui/styles";
 /* eslint-enable no-unused-vars */
 
 class MTableBody extends React.Component {
@@ -24,6 +25,8 @@ class MTableBody extends React.Component {
   };
 
   renderEmpty(emptyRowCount, renderData) {
+    const { theme } = this.props;
+    const isPhone = theme.breakpoints.down("xs");
     const rowHeight = this.props.options.padding === "default" ? 49 : 36;
     const localization = {
       ...MTableBody.defaultProps.localization,
@@ -64,7 +67,11 @@ class MTableBody extends React.Component {
           key={"empty-" + 0}
         >
           <TableCell
-            style={{ paddingTop: 0, paddingBottom: 0, textAlign: "center" }}
+            style={{
+              paddingTop: isPhone ? null : 0,
+              paddingBottom: isPhone ? null : 0,
+              textAlign: "center",
+            }}
             colSpan={this.props.columns.reduce(
               (currentVal, columnDef) =>
                 columnDef.hidden ? currentVal : currentVal + 1,
@@ -92,6 +99,7 @@ class MTableBody extends React.Component {
                       ? "1px dashed black"
                       : "1px dashed rgba(0, 0, 0, 0.38)",
                     borderRadius: 4,
+                    backgroundColor: this.state.isDragOver ? "#fafafa" : null,
                   }}
                 >
                   <div
@@ -99,6 +107,7 @@ class MTableBody extends React.Component {
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
+                      paddingBottom: 8,
                     }}
                   >
                     <svg
@@ -141,6 +150,8 @@ c-54 62 -119 188 -142 277 -24 88 -24 272 0 360 24 90 88 216 144 279 l46 52
                     {localization.emptyDataSourceMessage}
                   </div>
                   <input {...getInputProps()} />
+                  <span>{localization.dragAnDropMessage}</span>
+                  <em>{localization.dragAndDropMaximumFiles}</em>
                 </div>
               )}
             </Dropzone>
@@ -391,6 +402,9 @@ MTableBody.defaultProps = {
     emptyDataSourceMessage: "No records to display",
     filterRow: {},
     editRow: {},
+    dragAnDropMessage: "Drag 'n' drop your file here",
+    dragAndDropMaximumFiles:
+      "(1 file is the maximum number of file you can drop here)",
   },
 };
 
@@ -434,4 +448,4 @@ MTableBody.propTypes = {
   handleFileUpload: PropTypes.func,
 };
 
-export default MTableBody;
+export default withTheme(MTableBody);
